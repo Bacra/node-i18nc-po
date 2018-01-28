@@ -1,0 +1,39 @@
+{
+  "name": "i18nc-po",
+  "version": "0.0.1",
+  "description": "I18NC PO File utils",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "npm ls",
+    "test": "cross-env DEBUG=i18nc-po* mocha test/test_*",
+    "test-cov": "istanbul cover ./node_modules/.bin/_mocha -- test/test_* --reporter dot",
+    "test-travis": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- test/test_* --reporter dot"
+  },
+  "dependencies": {
+    "debug": "^3.1.0",
+    "lodash": "^4.17.4",
+    "node-po": "^0.1.2"
+  },
+  "devDependencies": {
+    "cross-env": "^2.0.0",
+    "expect.js": "^0.3.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Bacra/node-i18nc-po.git"
+  },
+  "keywords": [
+    "i18n",
+    "translate",
+    "po",
+    "gettext"
+  ],
+  "author": "Bacra Woo<bacra.woo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bacra/node-i18nc-po/issues"
+  },
+  "homepage": "https://github.com/Bacra/node-i18nc-po"
+}
