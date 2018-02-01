@@ -1,2 +1,2 @@
-exports.create = require('./lib/create');
-exports.parse = require('./lib/parse');
+exports.create = require('./lib/create').create;
+exports.parse = require('./lib/parse').parse;

@@ -1,9 +1,9 @@
 var fs = require('fs');
 var _ = require('lodash');
 var inputData = require('./input.json');
-var Creator = require('../lib/create');
+var i18ncPO = require('../');
 
-var output = Creator.create(inputData,
+var output = i18ncPO.create(inputData,
 	{
 		title: '第一份翻译稿v1.0',
 		email: 'bacra.woo@gmail.com',
