@@ -5,5 +5,6 @@ var Creator = require('../lib/create');
 console.log(Creator.create(inputData,
 	{
 		title: '第一份翻译稿v1.0',
-		email: 'bacra.woo@gmail.com'
+		email: 'bacra.woo@gmail.com',
+		pickFileLanguages: ['en-US']
 	}));
