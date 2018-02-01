@@ -1,0 +1,62 @@
+{
+	"codeTranslateWords": {
+		"DEFAULTS": [
+			"中文",
+			"简体"
+		],
+		"SUBTYPES": {
+			"subtype": [
+				"I18N(中文)",
+				"I18N(中文2)"
+			],
+			"subtype2": [
+				"I18N(中文)"
+			]
+		}
+	},
+	"i18nArgsTranslateWords": {
+		"DEFAULTS": [
+			"简体"
+		],
+		"SUBTYPES": {}
+	},
+	"funcTranslateWords": {
+		"func_code_file_key": [
+			{
+				"en-US": {
+					"DEFAULTS": {
+						"简体": "cn"
+					},
+					"SUBTYPES": {
+						"subtype": {
+							"I18N(中文2)": "I18N(zh2)"
+						}
+					}
+				},
+				"zh-TW": {
+					"DEFAULTS": {
+						"简体": "簡體"
+					}
+				}
+			}
+		]
+	},
+	"usedTranslateWords": {
+		"en-US": {
+			"DEFAULTS": {
+				"简体": "cn"
+			},
+			"SUBTYPES": {
+				"subtype": {
+					"I18N(中文)": "I18N(zh)"
+				}
+			}
+		},
+		"zh-TW": {
+			"DEFAULTS": {
+				"简体": "簡體"
+			}
+		}
+	},
+	"subScopeDatas": []
+}
