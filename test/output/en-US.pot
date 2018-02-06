@@ -5,6 +5,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: bacra.woo@gmail.com\n"
 "Content-Type: text/plain\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: en-US\n"
 
 #: @@0,*
 msgid "中文"
