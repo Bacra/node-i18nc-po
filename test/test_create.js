@@ -10,8 +10,8 @@ var output = i18ncPO.create(inputData,
 		pickFileLanguages: ['en-US']
 	});
 
-fs.writeFileSync(__dirname+'/output/all.po', output.po);
-_.each(output.pot, function(content, filename)
+fs.writeFileSync(__dirname+'/output/lans.pot', output.pot);
+_.each(output.po, function(content, filename)
 {
-	fs.writeFileSync(__dirname+'/output/'+filename+'.pot', content);
+	fs.writeFileSync(__dirname+'/output/'+filename+'.po', content);
 });
