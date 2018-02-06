@@ -36,29 +36,24 @@ describe('#refs_utils', function()
 		});
 	});
 
+
 	describe('#parse', function()
 	{
 		it('#type0', function()
 		{
-			expect(refsUtils.parse('0', 'msg1%sMsg2')).to.eql(
+			expect(refsUtils.parse('0')).to.eql(
 				{
 					fileKey : '',
-					subtype : undefined,
-					msgs    : ['msg1%sMsg2']
 				});
 
-			expect(refsUtils.parse('0,fileKey', 'msg1%sMsg2')).to.eql(
+			expect(refsUtils.parse('0,fileKey')).to.eql(
 				{
 					fileKey : 'fileKey',
-					subtype : undefined,
-					msgs    : ['msg1%sMsg2']
 				});
 
-			expect(refsUtils.parse('0,fileKey1,fileKey2', 'msg1%sMsg2')).to.eql(
+			expect(refsUtils.parse('0,fileKey1,fileKey2')).to.eql(
 				{
 					fileKey : 'fileKey1,fileKey2',
-					subtype : undefined,
-					msgs    : ['msg1%sMsg2']
 				});
 		});
 
@@ -66,37 +61,47 @@ describe('#refs_utils', function()
 		{
 			it('#base', function()
 			{
-				expect(refsUtils.parse('1,0,7,subtype,fileKey', 'msg1%sMsg2')).to.eql(
+				expect(refsUtils.parse('1,0,7,subtype,fileKey')).to.eql(
 					{
 						fileKey: 'fileKey',
 						subtype: 'subtype',
-						msgs: ['msg1%sMsg2']
+						joinIndexs: [],
 					});
 			});
 
-			it('#split msg', function()
+			it('#joinIndexs', function()
 			{
-				expect(refsUtils.parse('1,1,0,7,subtype,fileKey', 'msg1%sMsg2')).to.eql(
+				expect(refsUtils.parse('1,1,0,7,subtype,fileKey')).to.eql(
 					{
 						fileKey: 'fileKey',
 						subtype: 'subtype',
-						msgs: ['msg1', 'Msg2']
+						joinIndexs: [0]
 					});
 
-				expect(refsUtils.parse('1,2,0,1,7,subtype,fileKey', 'msg1%sMsg2%sMsg3')).to.eql(
+				expect(refsUtils.parse('1,2,0,1,7,subtype,fileKey')).to.eql(
 					{
 						fileKey: 'fileKey',
 						subtype: 'subtype',
-						msgs: ['msg1', 'Msg2', 'Msg3']
+						joinIndexs: [0, 1]
 					});
 
-				expect(refsUtils.parse('1,1,1,7,subtype,fileKey', 'msg1%sMsg2%sMsg3')).to.eql(
+				expect(refsUtils.parse('1,1,1,7,subtype,fileKey')).to.eql(
 					{
 						fileKey: 'fileKey',
 						subtype: 'subtype',
-						msgs: ['msg1%sMsg2', 'Msg3']
+						joinIndexs: [1]
 					});
 			});
+		});
+
+		describe('#subtype', function()
+		{
+			console.log('@todo');
+		});
+
+		describe('#fileKey', function()
+		{
+			console.log('@todo');
 		});
 
 		describe('#error', function()
@@ -105,4 +110,30 @@ describe('#refs_utils', function()
 		});
 	});
 
+
+
+	describe('#splitMsgByJoinIndexs', function()
+	{
+		it('#base', function()
+		{
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2', [0]))
+				.to.eql(['msg1', 'Msg2']);
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3', [0]))
+				.to.eql(['msg1', 'Msg2%sMsg3']);
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3', [1]))
+				.to.eql(['msg1%sMsg2', 'Msg3']);
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3', [0,1]))
+				.to.eql(['msg1', 'Msg2', 'Msg3']);
+		});
+	});
+
+
+	describe('#mixMsgsByJoinIndexs', function()
+	{
+		it('#base', function()
+		{
+			expect(refsUtils.mixMsgsByJoinIndexs('msg1%sMsg2', '消息1%s消息2', [0]))
+				.to.eql({'msg1': '消息1', 'Msg2': '消息2'});
+		});
+	});
 });
