@@ -1,7 +1,7 @@
-var fs = require('fs');
-var _ = require('lodash');
+var fs        = require('fs');
+var _         = require('lodash');
 var inputData = require('./input.json');
-var i18ncPO = require('../');
+var i18ncPO   = require('../');
 
 var output = i18ncPO.create(inputData,
 	{
