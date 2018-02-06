@@ -1,0 +1,28 @@
+{
+	"en-US": {
+		"*": {
+			"DEFAULTS": {
+				"中文": "zh",
+				"I18N(中文)%sI18N(中文2)": "I18N(zh)%sI18N(zh2)",
+				"简体": "zh-cn"
+			},
+			"SUBTYPES": {
+				"subtype": {
+					"I18N(中文)": "I18N(zh)",
+					"I18N(中文2)": "I18N(zh2)"
+				}
+			}
+		},
+		"fileKey": {
+			"SUBTYPES": {
+				"subtype": {
+					"I18N(中文)": "I18N(zh)",
+					"I18N(中文2)": "I18N(zh2)"
+				}
+			},
+			"DEFAULTS": {
+				"I18N(中文)%sI18N(中文2)": "I18N(zh)%sI18N(zh2)"
+			}
+		}
+	}
+}
