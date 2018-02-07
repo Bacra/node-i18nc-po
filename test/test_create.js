@@ -13,7 +13,7 @@ describe('#create', function()
 			{
 				title: '第一份翻译稿v1.0',
 				email: 'bacra.woo@gmail.com',
-				pickFileLanguages: ['en-US']
+				pickFileLanguages: ['en-US', 'zh-HK']
 			});
 
 		var otherPot = autoTestUtils.requireAfterWrite('lans.pot', output.pot, {readMode: 'string'});
