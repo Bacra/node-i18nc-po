@@ -25,6 +25,10 @@ msgstr ""
 msgid "I18N(中文)%s中文%sI18N(中文2)"
 msgstr ""
 
+#: @@0
+msgid "简体"
+msgstr ""
+
 #: @@1,0,8,subtype2
 msgid "subtype2"
 msgstr ""

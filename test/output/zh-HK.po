@@ -13,6 +13,7 @@ msgstr ""
 msgid "中文"
 msgstr ""
 
+#: @@0
 #: @@0,*
 msgid "简体"
 msgstr ""

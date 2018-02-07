@@ -46,6 +46,9 @@
 		},
 		{
 			"codeTranslateWords": {
+				"DEFAULTS":[
+					"简体"
+				],
 				"SUBTYPES": {
 					"subtype2": [
 						"subtype2"
