@@ -34,8 +34,6 @@ i18ncPO.parse(poContent);      // return dbTranslateWords for i18nc-core
 [npm-url]: https://www.npmjs.org/package/i18nc-po
 [travis-image]: http://img.shields.io/travis/Bacra/node-i18nc-po/master.svg?label=linux
 [travis-url]: https://travis-ci.org/Bacra/node-i18nc-po
-[appveyor-image]: https://img.shields.io/appveyor/ci/Bacra/node-i18nc-po/master.svg?label=windows
-[appveyor-url]: https://ci.appveyor.com/project/Bacra/node-i18nc-po
 [coveralls-image]: https://img.shields.io/coveralls/Bacra/node-i18nc-po.svg
 [coveralls-url]: https://coveralls.io/github/Bacra/node-i18nc-po
 [license-image]: http://img.shields.io/npm/l/i18nc-po.svg
