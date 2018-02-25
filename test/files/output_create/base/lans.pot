@@ -8,21 +8,12 @@ msgstr ""
 "MIME-Versio: 1.0\n"
 "X-Generator: I18NC-PO\n"
 
-#: @@0,*
-msgid "中文"
-msgstr ""
-
-#: @@0
-#: @@0,*
-msgid "简体"
+#: @@1,0,8,subtype2,*
+msgid "I18N(中文)"
 msgstr ""
 
 #: @@1,1,0,7,subtype,*
 msgid "I18N(中文)%sI18N(中文2)"
-msgstr ""
-
-#: @@1,0,8,subtype2,*
-msgid "I18N(中文)"
 msgstr ""
 
 #: @@1,1,1,7,subtype,subscope1
@@ -31,4 +22,13 @@ msgstr ""
 
 #: @@1,0,8,subtype2
 msgid "subtype2"
+msgstr ""
+
+#: @@0,*
+msgid "中文"
+msgstr ""
+
+#: @@0
+#: @@0,*
+msgid "简体"
 msgstr ""
