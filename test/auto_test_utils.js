@@ -1,20 +1,27 @@
 var _ = require('lodash');
 var fs = require('fs');
+var mkdirp = require('mkdirp');
 
 
-exports.requireAfterWrite = function requireAfterWrite(filename, data, options)
+exports.requireAfterWrite = function requireAfterWrite(path)
 {
-	var file = __dirname+'/output/'+filename;
-	if (!process.env.TEST_BUILD) return _requireOrFs(file, options);
+	var outpath = __dirname+'/files/'+path+'/';
+	mkdirp.sync(outpath);
 
-	if (typeof data == 'object')
+	return function(filename, data, options)
 	{
-		data = JSON.stringify(data, null, '\t');
-	}
+		var file = outpath+filename;
+		if (!process.env.TEST_BUILD) return _requireOrFs(file, options);
 
-	fs.writeFileSync(file, data);
+		if (typeof data == 'object')
+		{
+			data = JSON.stringify(data, null, '\t');
+		}
 
-	return _requireOrFs(file, options);
+		fs.writeFileSync(file, data);
+
+		return _requireOrFs(file, options);
+	};
 }
 
 function _requireOrFs(file, options)
