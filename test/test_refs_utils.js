@@ -94,19 +94,39 @@ describe('#refs_utils', function()
 			});
 		});
 
-		describe('#subtype', function()
-		{
-			console.log('@todo');
-		});
-
-		describe('#fileKey', function()
-		{
-			console.log('@todo');
-		});
-
 		describe('#error', function()
 		{
-			console.log('@todo');
+			function expHanlder(str, errmsg)
+			{
+				expect(function(){refsUtils.parse(str)}).to.throwError(errmsg);
+			}
+
+			it('#type', function()
+			{
+				expHanlder('2', /Ref String Type Is Not Support/);
+			});
+
+			it('#joinIndex', function()
+			{
+				expHanlder('1,a,1', /JoinIndexs Length Is Wrong/);
+				expHanlder('1,-1,1', /JoinIndexs Length Is Wrong/);
+				expHanlder('1,1,a', /JoinIndex Is Wrong/);
+				expHanlder('1,1,-1', /JoinIndex Is Wrong/);
+			});
+
+			it('#subtype', function()
+			{
+				expHanlder('1,0,a,subtype', /Subtype Length Is Wrong/);
+				expHanlder('1,0,-1,subtype', /Subtype Length Is Wrong/);
+				expHanlder('1,0,6,subtype', /FileKey Separator Is Wrong/);
+				expHanlder('1,0,8,subtype', /Subtype String Length Is Wrong/);
+			});
+
+			it('#fileKey', function()
+			{
+				expHanlder('1,0,1,a;', /FileKey Separator Is Wrong/);
+				expHanlder('1,0,1,a;a', /FileKey Separator Is Wrong/);
+			});
 		});
 	});
 
@@ -124,6 +144,8 @@ describe('#refs_utils', function()
 				.to.eql(['msg1%sMsg2', 'Msg3']);
 			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3', [0,1]))
 				.to.eql(['msg1', 'Msg2', 'Msg3']);
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3', [0,1,2]))
+				.to.eql(['msg1', 'Msg2', 'Msg3']);
 		});
 	});
 
@@ -134,6 +156,22 @@ describe('#refs_utils', function()
 		{
 			expect(refsUtils.mixMsgsByJoinIndexs('msg1%sMsg2', '消息1%s消息2', [0]))
 				.to.eql({'msg1': '消息1', 'Msg2': '消息2'});
+
+		});
+
+		it('#error', function()
+		{
+			expect(function()
+				{
+					refsUtils.mixMsgsByJoinIndexs('msg1', '消息1%s消息2', [0]);
+				})
+				.to.throwError('Miss Message Separator');
+
+			expect(function()
+				{
+					refsUtils.mixMsgsByJoinIndexs('msg1%smsg2%smsg3', '消息1%s消息2', [0]);
+				})
+				.to.throwError('Miss Message Separator');
 		});
 	});
 });
