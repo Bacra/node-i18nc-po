@@ -73,4 +73,45 @@ describe('#create', function()
 		});
 	});
 
+	describe('#existedTranslateFilter', function()
+	{
+		it('#empty', function()
+		{
+			var inputData = require('./files/input.json');
+			var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/existedTranslateFilter/empty');
+			var output = creator.create(inputData,
+				{
+					existedTranslateFilter: 'empty'
+				});
+
+			var otherPot = requireAfterWrite('lans.pot', output.pot, {readMode: 'string'});
+			expect(autoTestUtils.code2arr(output.pot)).to.eql(autoTestUtils.code2arr(otherPot));
+
+			_.each(output.po, function(content, filename)
+			{
+				var otherPo = requireAfterWrite(filename+'.po', content, {readMode: 'string'});
+				expect(autoTestUtils.code2arr(content)).to.eql(autoTestUtils.code2arr(otherPo));
+			});
+		});
+
+		it('#keep', function()
+		{
+			var inputData = require('./files/input.json');
+			var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/existedTranslateFilter/keep');
+			var output = creator.create(inputData,
+				{
+					existedTranslateFilter: 'keep'
+				});
+
+			var otherPot = requireAfterWrite('lans.pot', output.pot, {readMode: 'string'});
+			expect(autoTestUtils.code2arr(output.pot)).to.eql(autoTestUtils.code2arr(otherPot));
+
+			_.each(output.po, function(content, filename)
+			{
+				var otherPo = requireAfterWrite(filename+'.po', content, {readMode: 'string'});
+				expect(autoTestUtils.code2arr(content)).to.eql(autoTestUtils.code2arr(otherPo));
+			});
+		});
+	});
+
 });
