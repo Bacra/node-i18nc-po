@@ -1,58 +1,64 @@
 {
 	"currentFileKey": "*",
-	"codeTranslateWords": {
-		"DEFAULTS": [
-			"中文",
-			"简体"
-		],
-		"SUBTYPES": {
-			"subtype": [
-				"I18N(中文)",
-				"I18N(中文2)"
+	"words": {
+		"codeTranslateWords": {
+			"DEFAULTS": [
+				"中文",
+				"简体"
 			],
-			"subtype2": [
-				"I18N(中文)"
-			]
-		}
-	},
-	"usedTranslateWords": {
-		"en-US": {
-			"DEFAULTS": {
-				"简体": "cn"
-			},
 			"SUBTYPES": {
-				"subtype": {
-					"I18N(中文)": "I18N(zh)"
-				}
+				"subtype": [
+					"I18N(中文)",
+					"I18N(中文2)"
+				],
+				"subtype2": [
+					"I18N(中文)"
+				]
 			}
 		},
-		"zh-TW": {
-			"DEFAULTS": {
-				"简体": "簡體"
+		"usedTranslateWords": {
+			"en-US": {
+				"DEFAULTS": {
+					"简体": "cn"
+				},
+				"SUBTYPES": {
+					"subtype": {
+						"I18N(中文)": "I18N(zh)"
+					}
+				}
+			},
+			"zh-TW": {
+				"DEFAULTS": {
+					"简体": "簡體"
+				}
 			}
 		}
 	},
 	"subScopeDatas": [
 		{
 			"currentFileKey": "subscope1",
-			"codeTranslateWords": {
-				"SUBTYPES": {
-					"subtype": [
-						"I18N(中文)%s中文",
-						"I18N(中文2)"
-					]
+			"words": {
+				"codeTranslateWords": {
+					"SUBTYPES": {
+						"subtype": [
+							"I18N(中文)%s中文",
+							"I18N(中文2)"
+						]
+					}
 				}
 			}
 		},
 		{
-			"codeTranslateWords": {
-				"DEFAULTS":[
-					"简体"
-				],
-				"SUBTYPES": {
-					"subtype2": [
-						"subtype2"
-					]
+			"words": {
+				"codeTranslateWords": {
+					"DEFAULTS":[
+						"简体"
+					],
+					"SUBTYPES": {
+						"subtype2": [
+							"subtype2"
+						]
+					}
 				}
 			}
 		}
