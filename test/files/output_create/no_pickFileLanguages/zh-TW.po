@@ -37,7 +37,3 @@ msgstr ""
 #: @@3,1,0,,3,sub,8,:subtype,*
 msgid "中文I18N subtype5%s中文I18N subtype6"
 msgstr ""
-
-#: @@0,*
-msgid "简体"
-msgstr ""

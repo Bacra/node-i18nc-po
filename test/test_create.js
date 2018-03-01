@@ -13,20 +13,26 @@ describe('#create', function()
 		{
 			var json =
 			{
-				funcTranslateWords:
-				{
-					"file_key1": {"zh-TW": {DEFAULTS: {}}},
-					"file_key2": {"zh-HK": {DEFAULTS: {}}},
-					"file_key3": {"zh-HK": {DEFAULTS: {}}},
-				},
-				usedTranslateWords: {"en-US": {}},
-				subScopeDatas: [
+				words:
 				{
 					funcTranslateWords:
 					{
-						"file_key3": {"zh-HK": {DEFAULTS: {}}},
+						"file_key1": [{"zh-TW": {DEFAULTS: {}}}],
+						"file_key2": [{"zh-HK": {DEFAULTS: {}}}],
+						"file_key3": [{"zh-HK": {DEFAULTS: {}}}],
 					},
-					usedTranslateWords: {"en-MD": {}},
+					usedTranslateWords: {"en-US": {}},
+				},
+				subScopeDatas: [
+				{
+					words:
+					{
+						funcTranslateWords:
+						{
+							"file_key3": [{"zh-HK": {DEFAULTS: {}}}],
+						},
+						usedTranslateWords: {"en-MD": {}},
+					}
 				}]
 			};
 
@@ -37,41 +43,45 @@ describe('#create', function()
 
 	describe('#build', function()
 	{
-		var inputData = i18ncCode(require('./files/input.js').toString());
-		var usedTranslateWords =
+		function getInputData()
 		{
-			"en-US": {
-				"DEFAULTS": {
-					"简体": "cn"
+			var inputData = i18ncCode(require('./files/input.js').toString());
+			var usedTranslateWords =
+			{
+				"en-US": {
+					"DEFAULTS": {
+						"简体": "cn"
+					},
+					"SUBTYPES": {
+						"subtype": {
+							"简体": "zh"
+						}
+					}
 				},
-				"SUBTYPES": {
-					"subtype": {
-						"简体": "zh"
+				"zh-TW": {
+					"DEFAULTS": {
+						"简体": "簡體"
 					}
 				}
-			},
-			"zh-TW": {
-				"DEFAULTS": {
-					"简体": "簡體"
-				}
+			};
+
+			function adornInputData(json)
+			{
+				delete json.code;
+				if (json.words) json.words.usedTranslateWords = usedTranslateWords;
+				if (json.subScopeDatas) json.subScopeDatas.forEach(adornInputData);
 			}
-		};
 
-		function adornInputData(json)
-		{
-			delete json.code;
-			json.usedTranslateWords = usedTranslateWords;
-			json.subScopeDatas.forEach(adornInputData);
-			return json;
+			adornInputData(inputData);
+
+			return inputData;
 		}
-
-		adornInputData(inputData);
 
 
 		it('#base', function()
 		{
 			var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/base');
-			var output = creator.create(inputData,
+			var output = creator.create(getInputData(),
 				{
 					title: '第一份翻译稿v1.0',
 					email: 'bacra.woo@gmail.com',
@@ -91,7 +101,7 @@ describe('#create', function()
 		it('#no pickFileLanguages', function()
 		{
 			var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/no_pickFileLanguages');
-			var output = creator.create(inputData,
+			var output = creator.create(getInputData(),
 				{
 					title: '第一份翻译稿v1.0',
 					email: 'bacra.woo@gmail.com'
@@ -109,41 +119,29 @@ describe('#create', function()
 
 		describe('#existedTranslateFilter', function()
 		{
-			it('#empty', function()
+			function handler(type)
 			{
-				var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/existedTranslateFilter/empty');
-				var output = creator.create(inputData,
-					{
-						existedTranslateFilter: 'empty'
-					});
-
-				var otherPot = requireAfterWrite('lans.pot', output.pot, {readMode: 'string'});
-				expect(autoTestUtils.code2arr(output.pot)).to.eql(autoTestUtils.code2arr(otherPot));
-
-				_.each(output.po, function(content, filename)
+				it('#'+type, function()
 				{
-					var otherPo = requireAfterWrite(filename+'.po', content, {readMode: 'string'});
-					expect(autoTestUtils.code2arr(content)).to.eql(autoTestUtils.code2arr(otherPo));
-				});
-			});
+					var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/existedTranslateFilter/'+type);
+					var output = creator.create(getInputData(),
+						{
+							existedTranslateFilter: type
+						});
 
-			it('#keep', function()
-			{
-				var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/existedTranslateFilter/keep');
-				var output = creator.create(inputData,
+					var otherPot = requireAfterWrite('lans.pot', output.pot, {readMode: 'string'});
+					expect(autoTestUtils.code2arr(output.pot)).to.eql(autoTestUtils.code2arr(otherPot));
+
+					_.each(output.po, function(content, filename)
 					{
-						existedTranslateFilter: 'keep'
+						var otherPo = requireAfterWrite(filename+'.po', content, {readMode: 'string'});
+						expect(autoTestUtils.code2arr(content)).to.eql(autoTestUtils.code2arr(otherPo));
 					});
-
-				var otherPot = requireAfterWrite('lans.pot', output.pot, {readMode: 'string'});
-				expect(autoTestUtils.code2arr(output.pot)).to.eql(autoTestUtils.code2arr(otherPot));
-
-				_.each(output.po, function(content, filename)
-				{
-					var otherPo = requireAfterWrite(filename+'.po', content, {readMode: 'string'});
-					expect(autoTestUtils.code2arr(content)).to.eql(autoTestUtils.code2arr(otherPo));
 				});
-			});
+			}
+
+			handler('empty');
+			handler('keep');
 		});
 
 	});

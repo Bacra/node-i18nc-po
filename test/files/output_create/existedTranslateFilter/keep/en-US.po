@@ -39,4 +39,4 @@ msgstr ""
 
 #: @@0,*
 msgid "简体"
-msgstr ""
+msgstr "cn"
