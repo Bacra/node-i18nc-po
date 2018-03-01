@@ -13,9 +13,11 @@ msgstr ""
 msgid "中文"
 msgstr "zh"
 
-#: @@1,1,0,7,subtype,*
-#: @@1,1,0,7,subtype,fileKey
+#: @@3,1,0,,,8,:subtype,*
+#: @@3,1,0,,3,sub,8,:subtype,fileKey
 #: @@0
+#: @@1,1,0,7,subtype,*
+#: @@2,7,subtype,fileKey1,fileKey2
 #: @@0,fileKey
 msgid "I18N(中文)%sI18N(中文2)"
 msgstr "I18N(zh)%sI18N(zh2)"

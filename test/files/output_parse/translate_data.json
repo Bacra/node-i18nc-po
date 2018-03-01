@@ -7,6 +7,10 @@
 				"简体": "zh-cn"
 			},
 			"SUBTYPES": {
+				":subtype": {
+					"I18N(中文)": "I18N(zh)",
+					"I18N(中文2)": "I18N(zh2)"
+				},
 				"subtype": {
 					"I18N(中文)": "I18N(zh)",
 					"I18N(中文2)": "I18N(zh2)"
@@ -15,13 +19,22 @@
 		},
 		"fileKey": {
 			"SUBTYPES": {
-				"subtype": {
-					"I18N(中文)": "I18N(zh)",
+				":subtype": {
+					"I18N(中文)": "I18N(zh)"
+				},
+				":subtype@sub": {
 					"I18N(中文2)": "I18N(zh2)"
 				}
 			},
 			"DEFAULTS": {
 				"I18N(中文)%sI18N(中文2)": "I18N(zh)%sI18N(zh2)"
+			}
+		},
+		"fileKey1,fileKey2": {
+			"SUBTYPES": {
+				"subtype": {
+					"I18N(中文)%sI18N(中文2)": "I18N(zh)%sI18N(zh2)"
+				}
 			}
 		}
 	}
