@@ -1,51 +1,16 @@
 var _             = require('lodash');
 var expect        = require('expect.js');
 var creator       = require('../lib/create');
-var i18ncCode     = require('i18nc-core');
+var i18nc         = require('i18nc-core');
 var autoTestUtils = require('./auto_test_utils')
 
 
 describe('#create', function()
 {
-	function getInputData()
-	{
-		var inputData = i18ncCode(require('./files/input.js').toString());
-		var usedTranslateWords =
-		{
-			"en-US": {
-				"DEFAULTS": {
-					"简体": "cn"
-				},
-				"SUBTYPES": {
-					"subtype": {
-						"简体": "zh"
-					}
-				}
-			},
-			"zh-TW": {
-				"DEFAULTS": {
-					"简体": "簡體"
-				}
-			}
-		};
-
-		function adornInputData(json)
-		{
-			delete json.code;
-			if (json.words) json.words.usedTranslateWords.data = usedTranslateWords;
-			if (json.subScopeDatas) json.subScopeDatas.forEach(adornInputData);
-		}
-
-		adornInputData(inputData);
-
-		return inputData;
-	}
-
-
 	it('#base', function()
 	{
 		var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/base');
-		var output = creator.create(getInputData(),
+		var output = creator.create(i18nc('console.log("中文词典")'),
 			{
 				title: '第一份翻译稿v1.0',
 				email: 'bacra.woo@gmail.com',
@@ -106,6 +71,42 @@ describe('#create', function()
 
 		handler('empty');
 		handler('keep');
+		handler('ignore');
 	});
 
 });
+
+
+function getInputData()
+{
+	var inputData = i18nc(require('./files/input.js').toString());
+	var usedTranslateWords =
+	{
+		"en-US": {
+			"DEFAULTS": {
+				"简体": "cn"
+			},
+			"SUBTYPES": {
+				"subtype": {
+					"简体": "zh"
+				}
+			}
+		},
+		"zh-TW": {
+			"DEFAULTS": {
+				"简体": "簡體"
+			}
+		}
+	};
+
+	function adornInputData(json)
+	{
+		delete json.code;
+		if (json.words) json.words.usedTranslateWords.data = usedTranslateWords;
+		if (json.subScopeDatas) json.subScopeDatas.forEach(adornInputData);
+	}
+
+	adornInputData(inputData);
+
+	return inputData;
+}
