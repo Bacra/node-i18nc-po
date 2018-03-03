@@ -1,6 +1,6 @@
 {
   "name": "i18nc-po",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "I18NC PO File utils",
   "main": "index.js",
   "scripts": {
@@ -12,19 +12,16 @@
   "dependencies": {
     "debug": "^3.1.0",
     "extend": "^3.0.1",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.5",
     "node-po": "^0.1.2"
   },
   "devDependencies": {
     "cross-env": "^2.0.0",
     "expect.js": "^0.3.1",
-    "i18nc-core": "^5.1.0",
+    "i18nc-core": "^6.0.1",
     "istanbul": "^0.4.5",
     "mkdirp": "^0.5.1",
     "mocha": "^3.4.2"
-  },
-  "peerDependencies": {
-    "i18nc-core": "^5.1.0"
   },
   "repository": {
     "type": "git",
