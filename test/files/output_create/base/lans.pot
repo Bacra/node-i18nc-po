@@ -8,6 +8,5 @@ msgstr ""
 "MIME-Versio: 1.0\n"
 "X-Generator: I18NC-PO\n"
 
-#: @@0,*
 msgid "中文词典"
 msgstr ""

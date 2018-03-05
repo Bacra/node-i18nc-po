@@ -8,11 +8,9 @@ msgstr ""
 "X-Generator: I18NC-PO\n"
 "Language: zh-TW\n"
 
-#: @@0,*
 msgid "中文"
 msgstr ""
 
-#: @@0,*
 msgid "中文I18N"
 msgstr ""
 
@@ -37,6 +35,5 @@ msgstr ""
 msgid "中文I18N subtype5%s中文I18N subtype6"
 msgstr ""
 
-#: @@0,*
 msgid "简体"
 msgstr "簡體"

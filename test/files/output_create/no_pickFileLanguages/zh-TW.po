@@ -9,11 +9,9 @@ msgstr ""
 "X-Generator: I18NC-PO\n"
 "Language: zh-TW\n"
 
-#: @@0,*
 msgid "中文"
 msgstr ""
 
-#: @@0,*
 msgid "中文I18N"
 msgstr ""
 
