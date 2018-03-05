@@ -24,3 +24,7 @@ msgstr "I18N(zh)%sI18N(zh2)"
 
 msgid "简体"
 msgstr "zh-cn"
+
+#: filename,1
+msgid "词典"
+msgstr "dictionary"

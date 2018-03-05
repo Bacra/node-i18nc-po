@@ -4,7 +4,8 @@
 			"DEFAULTS": {
 				"中文": "zh",
 				"I18N(中文)%sI18N(中文2)": "I18N(zh)%sI18N(zh2)",
-				"简体": "zh-cn"
+				"简体": "zh-cn",
+				"词典": "dictionary"
 			},
 			"SUBTYPES": {
 				":subtype": {
