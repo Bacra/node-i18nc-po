@@ -1,9 +1,10 @@
 {
   "name": "i18nc-po",
-  "version": "2.2.3",
+  "version": "2.2.2",
   "description": "I18NC PO File utils",
   "main": "index.js",
   "scripts": {
+    "prepublish": "npm ls",
     "test": "cross-env DEBUG=i18nc-po* mocha test/test_*",
     "test-cov": "istanbul cover ./node_modules/.bin/_mocha -- test/test_* --reporter dot",
     "test-travis": "istanbul cover ./node_modules/.bin/_mocha --report lcovonly -- test/test_* --reporter dot",
