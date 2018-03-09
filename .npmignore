@@ -1,6 +1,5 @@
 node_modules
 npm-debug.log
-package-lock.json
 
 .gitignore
 .travis.yml
@@ -11,11 +10,5 @@ package-lock.json
 .tags*
 .DS_Store
 
-appveyor.yml
-
 test
 coverage
-
-webpack.config.js
-sauce_connect.log
-karma.conf.js
