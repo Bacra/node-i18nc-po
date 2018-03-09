@@ -1,6 +1,6 @@
 {
   "name": "i18nc-po",
-  "version": "2.2.2",
+  "version": "2.2.4",
   "description": "I18NC PO File utils",
   "main": "index.js",
   "scripts": {
