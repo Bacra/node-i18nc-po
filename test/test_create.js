@@ -10,7 +10,7 @@ describe('#create', function()
 	it('#base', function()
 	{
 		var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/base');
-		var output = creator.create(i18nc('console.log("中文词典")'),
+		var output = creator.create(i18nc('alert("中文词典")', {isClosureWhenInsertedHead: false}),
 			{
 				title: '第一份翻译稿v1.0',
 				email: 'bacra.woo@gmail.com',

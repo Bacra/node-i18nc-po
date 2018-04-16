@@ -6,8 +6,8 @@ module.exports = function code()
 		this.__FUNCTION_VERSION__ = '5s';
 	}
 
-	console.log('中文');
-	console.log('简体');
+	alert('中文');
+	alert('简体');
 	I18N('中文I18N');
 	I18N('中文I18N subtype', 'subtype');
 	I18N('中文I18N subtype2', 'subtype');
