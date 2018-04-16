@@ -8,9 +8,6 @@ msgstr ""
 "X-Generator: I18NC-PO\n"
 "Language: en-US\n"
 
-msgid "中文"
-msgstr ""
-
 msgid "中文I18N"
 msgstr ""
 
@@ -33,4 +30,8 @@ msgstr ""
 
 #: @@3,1,0,,3,sub,8,:subtype,*
 msgid "中文I18N subtype5%s中文I18N subtype6"
+msgstr ""
+
+#: @@2,8,subtype2,*
+msgid "简体"
 msgstr ""

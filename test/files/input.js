@@ -9,6 +9,8 @@ module.exports = function code()
 	alert('中文');
 	alert('简体');
 	I18N('中文I18N');
+	I18N('简体', 'subtype');
+	I18N('简体', 'subtype2');
 	I18N('中文I18N subtype', 'subtype');
 	I18N('中文I18N subtype2', 'subtype');
 	I18N('中文I18N subtype', 'subtype2');

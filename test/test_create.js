@@ -79,34 +79,31 @@ describe('#create', function()
 
 function getInputData()
 {
-	var inputData = i18nc(require('./files/input.js').toString());
-	var usedTranslateWords =
-	{
-		"en-US": {
-			"DEFAULTS": {
-				"简体": "cn"
-			},
-			"SUBTYPES": {
-				"subtype": {
-					"简体": "zh"
+	var inputData = i18nc(require('./files/input.js').toString(),
+		{
+			dbTranslateWords: {
+				"en-US": {
+					"*": {
+						"DEFAULTS": {
+							"简体": "cn",
+							"中文": "zh"
+						},
+						"SUBTYPES": {
+							"subtype": {
+								"简体": "zh"
+							}
+						}
+					}
+				},
+				"zh-TW": {
+					"*": {
+						"DEFAULTS": {
+							"简体": "簡體"
+						}
+					}
 				}
 			}
-		},
-		"zh-TW": {
-			"DEFAULTS": {
-				"简体": "簡體"
-			}
-		}
-	};
-
-	function adornInputData(json)
-	{
-		delete json.code;
-		if (json.words) json.words.usedTranslateWords.data = usedTranslateWords;
-		if (json.subScopeDatas) json.subScopeDatas.forEach(adornInputData);
-	}
-
-	adornInputData(inputData);
+		});
 
 	return inputData;
 }
