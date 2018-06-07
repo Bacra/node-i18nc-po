@@ -1,3 +1,5 @@
+'use strict';
+
 var _             = require('lodash');
 var expect        = require('expect.js');
 var creator       = require('../lib/create');

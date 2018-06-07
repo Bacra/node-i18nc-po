@@ -1,3 +1,5 @@
+'use strict';
+
 var expect    = require('expect.js')
 var refsUtils = require('../lib/refs_utils');
 
