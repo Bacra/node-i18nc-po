@@ -5,6 +5,7 @@ npm-debug.log
 .travis.yml
 .gitattributes
 .eslintrc
+.eslintignore
 .editorconfig
 .npmignore
 .tags*
