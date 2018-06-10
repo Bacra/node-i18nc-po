@@ -16,7 +16,7 @@ npm install i18nc-po --save
 
 # Useage
 
-```
+```javascript
 var fs = require('fs');
 var i18nc = require('i18nc-core');
 var i18ncPO = require('i18nc-po');
