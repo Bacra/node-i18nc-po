@@ -2,8 +2,9 @@ module.exports = function code()
 {
 	function I18N()
 	{
-		this.__FILE_KEY__ = '*';
-		this.__FUNCTION_VERSION__ = '5s';
+		var self = I18N;
+		self.__FILE_KEY__ = '*';
+		self.__FUNCTION_VERSION__ = '5s';
 	}
 
 	alert('中文');
@@ -19,8 +20,9 @@ module.exports = function code()
 	{
 		function I18N()
 		{
-			this.__FILE_KEY__ = 'fileKey';
-			this.__FUNCTION_VERSION__ = '5s';
+			var self = I18N;
+			self.__FILE_KEY__ = 'fileKey';
+			self.__FUNCTION_VERSION__ = '5s';
 		}
 
 		I18N('中文I18N subtype', ':subtype');
@@ -31,8 +33,9 @@ module.exports = function code()
 	{
 		function I18N()
 		{
-			this.__FILE_KEY__ = '*';
-			this.__FUNCTION_VERSION__ = '5s';
+			var self = I18N;
+			self.__FILE_KEY__ = '*';
+			self.__FUNCTION_VERSION__ = '5s';
 		}
 
 		I18N('中文I18N subtype3', ':subtype');
@@ -43,8 +46,9 @@ module.exports = function code()
 		{
 			function I18N()
 			{
-				this.__FILE_KEY__ = '*';
-				this.__FUNCTION_VERSION__ = '5s';
+				var self = I18N;
+				self.__FILE_KEY__ = '*';
+				self.__FUNCTION_VERSION__ = '5s';
 			}
 
 			I18N('中文I18N subtype5', ':subtype');
