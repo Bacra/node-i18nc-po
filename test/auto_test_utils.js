@@ -29,7 +29,7 @@ function _requireOrFs(file, options)
 {
 	options || (options = {});
 
-	switch(options.readMode)
+	switch(options.mode)
 	{
 		case 'string':
 			return fs.readFileSync(file, {encoding: 'utf8'});
