@@ -4,34 +4,40 @@ var _             = require('lodash');
 var expect        = require('expect.js');
 var creator       = require('../lib/create');
 var i18nc         = require('i18nc-core');
-var autoTestUtils = require('./auto_test_utils')
+var autoTestUtils = require('./auto_test_utils');
 
 
 describe('#create', function()
 {
 	it('#base', function()
 	{
+		var onlyTheseLanguages = ['en-US', 'zh-HK'];
 		var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/base');
 		var output = creator.create(i18nc('alert("中文词典")', {isCheckClosureForNewI18NHandler: false}),
 			{
 				title: '第一份翻译稿v1.0',
 				email: 'bacra.woo@gmail.com',
-				pickFileLanguages: ['en-US', 'zh-HK']
+				onlyTheseLanguages: onlyTheseLanguages,
 			});
 
 		var otherPot = requireAfterWrite('lans.pot', output.pot, {mode: 'string'});
 		expect(autoTestUtils.code2arr(output.pot)).to.eql(autoTestUtils.code2arr(otherPot));
 
+		var outputLans = [];
 		_.each(output.po, function(content, filename)
 		{
+			outputLans.push(filename);
 			var otherPo = requireAfterWrite(filename+'.po', content, {mode: 'string'});
 			expect(autoTestUtils.code2arr(content)).to.eql(autoTestUtils.code2arr(otherPo));
 		});
+
+		expect(onlyTheseLanguages.length).to.be(outputLans.length);
+		expect(_.difference(outputLans, onlyTheseLanguages)).to.be.empty();
 	});
 
-	it('#no pickFileLanguages', function()
+	it('#no onlyTheseLanguages', function()
 	{
-		var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/no_pickFileLanguages');
+		var requireAfterWrite = autoTestUtils.requireAfterWrite('output_create/no_onlyTheseLanguages');
 		var output = creator.create(getInputData(),
 			{
 				title: '第一份翻译稿v1.0',
