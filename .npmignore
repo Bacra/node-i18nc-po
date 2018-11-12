@@ -1,16 +1,14 @@
-node_modules
-npm-debug.log
-package-lock.json
+karam.conf.js
 
-.gitignore
-.travis.yml
-.gitattributes
-.eslintrc.js
-.eslintignore
-.editorconfig
-.npmignore
-.tags*
-.DS_Store
+Gruntfile.js
+gulpfile.js
+webpack.conf.js
+
+.*
 
 test
+dist/test
+src/test
 coverage
+benchmark
+docs
