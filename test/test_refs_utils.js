@@ -27,13 +27,13 @@ describe('#refs_utils', function()
 				.to.be('1,0,7,subtype');
 			expect(refsUtils.genSimpleLineSubtype('fileKey', 'subtype', ['msg1', 'msg2']))
 				.to.be('1,1,0,7,subtype,fileKey');
-			expect(refsUtils.genSimpleLineSubtype('fileKey', 'subtype', ['msg1', 'msg2%sMsg3']))
+			expect(refsUtils.genSimpleLineSubtype('fileKey', 'subtype', ['msg1', 'msg2%pMsg3']))
 				.to.be('1,1,0,7,subtype,fileKey');
-			expect(refsUtils.genSimpleLineSubtype('fileKey', 'subtype', ['msg1%sMsg2', 'msg3']))
+			expect(refsUtils.genSimpleLineSubtype('fileKey', 'subtype', ['msg1%pMsg2', 'msg3']))
 				.to.be('1,1,1,7,subtype,fileKey');
-			expect(refsUtils.genSimpleLineSubtype('fileKey', 'subtype', ['msg1%sMsg2', 'msg3%sMsg4']))
+			expect(refsUtils.genSimpleLineSubtype('fileKey', 'subtype', ['msg1%pMsg2', 'msg3%pMsg4']))
 				.to.be('1,1,1,7,subtype,fileKey');
-			expect(refsUtils.genSimpleLineSubtype('fileKey', 'subtype', ['msg1%sMsg2', 'msg3%sMsg4', 'msg5']))
+			expect(refsUtils.genSimpleLineSubtype('fileKey', 'subtype', ['msg1%pMsg2', 'msg3%pMsg4', 'msg5']))
 				.to.be('1,2,1,3,7,subtype,fileKey');
 		});
 
@@ -45,13 +45,13 @@ describe('#refs_utils', function()
 				.to.be('3,0,,7,subtype');
 			expect(refsUtils.genLineSubtype('fileKey', 'subtype', [{msg: 'msg1'}, {msg: 'msg2'}]))
 				.to.be('3,1,0,,,7,subtype,fileKey');
-			expect(refsUtils.genLineSubtype('fileKey', 'subtype', [{msg: 'msg1'}, {msg: 'msg2%sMsg3'}]))
+			expect(refsUtils.genLineSubtype('fileKey', 'subtype', [{msg: 'msg1'}, {msg: 'msg2%pMsg3'}]))
 				.to.be('3,1,0,,,7,subtype,fileKey');
-			expect(refsUtils.genLineSubtype('fileKey', 'subtype', [{msg: 'msg1%sMsg2'}, {msg: 'msg3'}]))
+			expect(refsUtils.genLineSubtype('fileKey', 'subtype', [{msg: 'msg1%pMsg2'}, {msg: 'msg3'}]))
 				.to.be('3,1,1,,,7,subtype,fileKey');
-			expect(refsUtils.genLineSubtype('fileKey', 'subtype', [{msg: 'msg1%sMsg2'}, {msg: 'msg3%sMsg4'}]))
+			expect(refsUtils.genLineSubtype('fileKey', 'subtype', [{msg: 'msg1%pMsg2'}, {msg: 'msg3%pMsg4'}]))
 				.to.be('3,1,1,,,7,subtype,fileKey');
-			expect(refsUtils.genLineSubtype('fileKey', 'subtype', [{msg: 'msg1%sMsg2'}, {msg: 'msg3%sMsg4'}, {msg: 'msg5'}]))
+			expect(refsUtils.genLineSubtype('fileKey', 'subtype', [{msg: 'msg1%pMsg2'}, {msg: 'msg3%pMsg4'}, {msg: 'msg5'}]))
 				.to.be('3,2,1,3,,,,7,subtype,fileKey');
 
 			expect(refsUtils.genLineSubtype('', 'subtype', [{msg: 'msg1', subkey: 'sub'}]))
@@ -315,23 +315,23 @@ describe('#refs_utils', function()
 	{
 		it('#base', function()
 		{
-			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2', {joinIndexs: [0]}))
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%pMsg2', {joinIndexs: [0]}))
 				.to.eql({'*': ['msg1', 'Msg2']});
-			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3', {joinIndexs: [0]}))
-				.to.eql({'*': ['msg1', 'Msg2%sMsg3']});
-			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3', {joinIndexs: [1]}))
-				.to.eql({'*': ['msg1%sMsg2', 'Msg3']});
-			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3', {joinIndexs: [0,1]}))
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%pMsg2%pMsg3', {joinIndexs: [0]}))
+				.to.eql({'*': ['msg1', 'Msg2%pMsg3']});
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%pMsg2%pMsg3', {joinIndexs: [1]}))
+				.to.eql({'*': ['msg1%pMsg2', 'Msg3']});
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%pMsg2%pMsg3', {joinIndexs: [0,1]}))
 				.to.eql({'*': ['msg1', 'Msg2', 'Msg3']});
-			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3', {joinIndexs: [0,1,2]}))
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%pMsg2%pMsg3', {joinIndexs: [0,1,2]}))
 				.to.eql({'*': ['msg1', 'Msg2', 'Msg3']});
-			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2', {joinIndexs: [0, 3]}))
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%pMsg2', {joinIndexs: [0, 3]}))
 				.to.eql({'*': ['msg1', 'Msg2']});
 		});
 
 		it('#subkeys', function()
 		{
-			expect(refsUtils._splitMsgByJoinIndexs('msg1%sMsg2%sMsg3',
+			expect(refsUtils._splitMsgByJoinIndexs('msg1%pMsg2%pMsg3',
 				{
 					joinIndexs: [0,1,2],
 					subkeys: {1: 'sub1'}
@@ -351,8 +351,8 @@ describe('#refs_utils', function()
 		{
 			expect(refsUtils.mixMsgsByJoinIndexs(
 				{
-					msgid: 'msg1%sMsg2',
-					msgstr: '消息1%s消息2',
+					msgid: 'msg1%pMsg2',
+					msgstr: '消息1%p消息2',
 					joinIndexs: [0],
 					subkeys: {}
 				}))
@@ -366,8 +366,8 @@ describe('#refs_utils', function()
 		{
 			expect(refsUtils.mixMsgsByJoinIndexs(
 				{
-					msgid: 'msg1%sMsg2%sMsg2',
-					msgstr: '消息1%s消息2%s消息3',
+					msgid: 'msg1%pMsg2%pMsg2',
+					msgstr: '消息1%p消息2%p消息3',
 					joinIndexs: [0,1],
 					subkeys: {1: 'sub1'}
 				}))
@@ -379,8 +379,8 @@ describe('#refs_utils', function()
 
 			expect(refsUtils.mixMsgsByJoinIndexs(
 				{
-					msgid: 'msg1%sMsg2%sMsg2',
-					msgstr: '消息1%s消息2%s消息3',
+					msgid: 'msg1%pMsg2%pMsg2',
+					msgstr: '消息1%p消息2%p消息3',
 					joinIndexs: [0,1],
 					subkeys: {2: 'sub2'}
 				}))
@@ -395,13 +395,13 @@ describe('#refs_utils', function()
 		{
 			expect(function()
 				{
-					refsUtils.mixMsgsByJoinIndexs({msgid: 'msg1', msgstr: '消息1%s消息2', joinIndexs: [0], subkeys: []});
+					refsUtils.mixMsgsByJoinIndexs({msgid: 'msg1', msgstr: '消息1%p消息2', joinIndexs: [0], subkeys: []});
 				})
 				.to.throwError(/Miss Message Separator/);
 
 			expect(function()
 				{
-					refsUtils.mixMsgsByJoinIndexs({msgid: 'msg1%smsg2%smsg3', msgstr: '消息1%s消息2', joinIndexs: [0], subkeys: []});
+					refsUtils.mixMsgsByJoinIndexs({msgid: 'msg1%pmsg2%pmsg3', msgstr: '消息1%p消息2', joinIndexs: [0], subkeys: []});
 				})
 				.to.throwError(/Miss Message Separator/);
 		});
