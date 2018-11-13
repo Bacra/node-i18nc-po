@@ -35,10 +35,10 @@ msgstr ""
 msgid "中文I18N subtype5%s中文I18N subtype6"
 msgstr ""
 
-msgid "简体"
-msgstr "簡體"
-
 #: @@2,7,subtype,*
 #: @@2,8,subtype2,*
 msgid "简体"
 msgstr ""
+
+msgid "简体"
+msgstr "簡體"
